@@ -72,5 +72,12 @@ object S99 {
     }
     list.foldRight(Nil: List[A]){ (n, ls) => create(n._1, n._2) ::: ls }
   }
+  // P13
+  def encodeDirect[A](list: List[A]): List[(Int, A)] = list.foldRight(Nil: List[(Int, A)]){
+    (e, ls) => ls match {
+      case (n, x @ `e`) :: xs => (n + 1, e) :: xs
+      case _ => (1, e) :: ls
+    }
+  }
 }
 
