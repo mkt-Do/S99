@@ -52,5 +52,9 @@ object S99 {
       case _ => List(e) :: ls
     }
   }
+  // P10
+  def encode[A](list: List[A]): List[(Int, A)] = pack(list).map{
+    ls => (length(ls), ls.head)
+  }
 }
 
