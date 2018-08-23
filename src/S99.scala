@@ -12,5 +12,11 @@ object S99 {
     case x :: y :: Nil => x
     case x :: y :: ys => penultimate(y :: ys)
   }
+  // P03
+  def nth[A](n: Int, list: List[A]): A = list match {
+    case Nil => throw new IllegalArgumentException("Nil")
+    case x :: xs if n == 0 => x
+    case x :: xs => nth(n - 1, xs)
+  }
 }
 
