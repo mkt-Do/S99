@@ -18,5 +18,10 @@ object S99 {
     case x :: xs if n == 0 => x
     case x :: xs => nth(n - 1, xs)
   }
+  // P04
+  def length[A](list: List[A]): Int = list match {
+    case Nil => 0
+    case x :: xs => length(xs) + 1
+  }
 }
 
