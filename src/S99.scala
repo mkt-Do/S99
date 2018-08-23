@@ -31,5 +31,11 @@ object S99 {
   }
   // P06
   def isPalindrome[A](list: List[A]): Boolean = list == reverse(list)
+  // P07
+  def flatten(list: List[Any]): List[Any] = list match {
+    case Nil => Nil
+    case (x @ y :: ys) :: ls => flatten(x) ::: flatten(ls)
+    case x :: xs => x :: flatten(xs)
+  }
 }
 
