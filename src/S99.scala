@@ -56,5 +56,12 @@ object S99 {
   def encode[A](list: List[A]): List[(Int, A)] = pack(list).map{
     ls => (length(ls), ls.head)
   }
+  // P11
+  def encodeModified[A](list: List[A]): List[Any] = encode(list).map{
+    (n, e) => n match {
+      case 1 => e
+      case _ => (n, e)
+    }
+  }
 }
 
