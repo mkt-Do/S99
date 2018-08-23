@@ -29,5 +29,7 @@ object S99 {
     case x :: Nil => x :: Nil
     case x :: xs => reverse(xs) :+ x
   }
+  // P06
+  def isPalindrome[A](list: List[A]): Boolean = list == reverse(list)
 }
 
