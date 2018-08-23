@@ -37,5 +37,13 @@ object S99 {
     case (x @ y :: ys) :: ls => flatten(x) ::: flatten(ls)
     case x :: xs => x :: flatten(xs)
   }
+  //P08
+  def compress[A](list: List[A]): List[A] = list.foldRight(Nil: List[A]){
+    (e, ls) => ls match {
+      case Nil => e :: Nil
+      case x @ `e` :: xs => e :: xs
+      case x :: xs => e :: x :: xs
+    }
+  }
 }
 
