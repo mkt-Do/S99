@@ -63,5 +63,14 @@ object S99 {
       case _ => (n, e)
     }
   }
+  // P12
+  def decode[A](list: List[(Int, A)]): List[A] = {
+    def create[A](n: Int, e: A): List[A] = n match {
+      case 1 => e :: Nil
+      case n if n <= 0 => throw new IllegalArgumentException("not allowed under 0")
+      case n => e :: create(n - 1, e)
+    }
+    list.foldRight(Nil: List[A]){ (n, ls) => create(n._1, n._2) ::: ls }
+  }
 }
 
