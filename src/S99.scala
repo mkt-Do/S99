@@ -23,5 +23,11 @@ object S99 {
     case Nil => 0
     case x :: xs => length(xs) + 1
   }
+  // P05
+  def reverse[A](list: List[A]): List[A] = list match {
+    case Nil => Nil
+    case x :: Nil => x :: Nil
+    case x :: xs => reverse(xs) :+ x
+  }
 }
 
