@@ -79,5 +79,7 @@ object S99 {
       case _ => (1, e) :: ls
     }
   }
+  // P14
+  def duplicate[A](list: List[A]): List[A] = list.foldRight(Nil: List[A]){ (e, ls) => e :: e :: ls }
 }
 
