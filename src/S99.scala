@@ -81,5 +81,15 @@ object S99 {
   }
   // P14
   def duplicate[A](list: List[A]): List[A] = list.foldRight(Nil: List[A]){ (e, ls) => e :: e :: ls }
+  // P15
+  def duplicateN[A](n: Int, list: List[A]): List[A] = {
+    def createDuplicateElements[A](n: Int, e: A): List[A] = n match {
+      case 0 => Nil
+      case n if n < 0 => throw new IllegalArgumentException("Not allowed under 0")
+      case n => e :: createDuplicateElements(n - 1, e)
+    }
+    list.foldRight(Nil: List[A]){ (e, ls) => createDuplicateElements(n, e) => ls }
+  }
+  }
 }
 
