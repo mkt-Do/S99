@@ -99,5 +99,14 @@ object S99 {
       case h :: t => h :: dropMth(m - 1, t)
     }
   }
+  // P17
+  def split[A](n: Int, list: List[A]): (List[A], List[A]) = list match {
+    case Nil => (Nil, Nil)
+    case h :: t if n == 1 => (h :: Nil, t)
+    case h :: t if n < 1 => throw new IllegalArgumentException("Not allowed under 0")
+    case h :: t => split(n - 1, t) match {
+      case (xs, ys) => (h :: xs, ys)
+    }
+  }
 }
 
