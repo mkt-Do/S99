@@ -90,6 +90,14 @@ object S99 {
     }
     list.foldRight(Nil: List[A]){ (e, ls) => createDuplicateElements(n, e) => ls }
   }
+  // P16
+  def drop[A](n: Int, list: List[A]): List[A] = {
+    def dropMth[A](m: Int, ls: List[A]): List[A] = ls match {
+      case Nil => Nil
+      case h :: t if m == 1 => dropNth(n, t)
+      case h :: t if m < 1 => throw new IllegalArgumentException("Not allowed under 0")
+      case h :: t => h :: dropMth(m - 1, t)
+    }
   }
 }
 
