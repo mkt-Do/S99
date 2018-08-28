@@ -116,5 +116,12 @@ object S99 {
     case h :: t if n == 0 => throw new IllegalArgumentException("First element is under second element")
     case h :: t => slice(m - 1, n - 1, t)
   }
+  // P19
+  def rotate[A](n: Int, list: List[A]): List[A] = list match {
+    case Nil => Nil
+    case h :: t if n < 0 => rotate(list.length + n, h :: t)
+    case h :: t if n == 0 => h :: t
+    case h :: t => rotate(n - 1, t :+ h)
+  }
 }
 
