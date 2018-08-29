@@ -139,5 +139,9 @@ object S99 {
     case h :: t if n < 0 => throw new IllegalArgumentException("Not allowed under 0")
     case h :: t => h :: insertAt(e, n - 1, t)
   }
+  // P22
+  def range(m: Int, n: Int): List[Int] = if (m > n) throw new IllegalArgumentException(s"First element $m should be under second element $n")
+    else if (m == n) n :: Nil
+    else m :: range(m + 1, n)
 }
 
