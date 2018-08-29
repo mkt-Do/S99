@@ -123,5 +123,14 @@ object S99 {
     case h :: t if n == 0 => h :: t
     case h :: t => rotate(n - 1, t :+ h)
   }
+  // P20
+  def removeAt[A](n: Int, list: List[A]): (List[A], A) = list match {
+    case Nil => throw new IllegalArgumentException("Nil")
+    case h :: t if n == 0 => (t, h)
+    case h :: t if n < 0 => throw new IllegalArgumentException("Not allowed under 0")
+    case h :; t => removeAt(n - 1, t) match {
+      case (ls, x) => (h :: ls, x)
+    }
+  }
 }
 
