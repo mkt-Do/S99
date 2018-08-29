@@ -132,5 +132,12 @@ object S99 {
       case (ls, x) => (h :: ls, x)
     }
   }
+  // P21
+  def insertAt[A](e: A, n: Int, list: List[A]): List[A] = list match {
+    case Nil => Nil
+    case h :: t if n == 0 => e :: h :: t
+    case h :: t if n < 0 => throw new IllegalArgumentException("Not allowed under 0")
+    case h :: t => h :: insertAt(e, n - 1, t)
+  }
 }
 
