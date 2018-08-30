@@ -143,5 +143,11 @@ object S99 {
   def range(m: Int, n: Int): List[Int] = if (m > n) throw new IllegalArgumentException(s"First element $m should be under second element $n")
     else if (m == n) n :: Nil
     else m :: range(m + 1, n)
+  // P23
+  def randomSelect[A](n: Int, list: List[A]): List[A] = removeAt((Math.random * list.length).toInt, list) match {
+    case (ls, e) if n == 1 => e :: Nil
+    case (ls, e) if n <= 0 => throw new IllegalArgumentException("First element should be smaller than list size")
+    case (ls, e) => e :: randomSelect(n - 1, ls)
+  }
 }
 
