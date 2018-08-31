@@ -149,5 +149,11 @@ object S99 {
     case (ls, e) if n <= 0 => throw new IllegalArgumentException("First element should be smaller than list size")
     case (ls, e) => e :: randomSelect(n - 1, ls)
   }
+  // P24
+  def lotto(n: Int, m: Int): List[Int] = {
+    if (m <= 0) throw new IllegalArgumentException("Second element should be over 0")
+    else if (n < 0 || m < n) throw new IllegalArgumentException("First element should be under Second element and over 0")
+    else randomSelect(n, (1 to m).toList)
+  }
 }
 
