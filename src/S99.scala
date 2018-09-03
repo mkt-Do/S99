@@ -155,5 +155,7 @@ object S99 {
     else if (n < 0 || m < n) throw new IllegalArgumentException("First element should be under Second element and over 0")
     else randomSelect(n, (1 to m).toList)
   }
+  // P25
+  def randomPermute[A](list: List[A]): List[A] = randomSelect(list.length, list)
 }
 
