@@ -157,5 +157,15 @@ object S99 {
   }
   // P25
   def randomPermute[A](list: List[A]): List[A] = randomSelect(list.length, list)
+  // P26
+  def combinations[A](n: Int, list: List[A]): List[List[A]] = {
+    def addHead[A](h: A, ls: List[List[A]]): List[List[A]] = ls map { h :: _ }
+    list match {
+      case _ if n < 1 => Nil
+      case Nil => Nil
+      case _ if n == 1 => list map { List(_) }
+      case h :: t => addHead(h, combinations(n - 1, t)) ::: combinations(n, t)
+    }
+  }
 }
 
