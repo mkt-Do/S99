@@ -167,5 +167,11 @@ object S99 {
       case h :: t => addHead(h, combinations(n - 1, t)) ::: combinations(n, t)
     }
   }
+  // P27a
+  def group3[A](list: List[A]): List[List[List[A]]] = for {
+    a <- combinations(2, list)
+    b <- combinations(3, list.filter(e => !a.contains(e)))
+    c <- List(list.filter(e => !(a.contains(e) || b.contains(e))))
+  } yield List(a, b, c)
 }
 
