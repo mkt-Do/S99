@@ -173,5 +173,13 @@ object S99 {
     b <- combinations(3, list.filter(e => !a.contains(e)))
     c <- List(list.filter(e => !(a.contains(e) || b.contains(e))))
   } yield List(a, b, c)
+  // P27b
+  def group[A](nums: List[Int], list: List[A]): List[List[List[A]]] = {
+    if (nums.foldRight(0)((v, acc) => v + acc) > list.length) throw new IllegalArgumentException("Sum of first list should be smaller than second list length")
+    nums match {
+      case Nil => List(Nil)
+      case x :: xs => combinations(x, list).flatMap{ ls => group(xs, list.filter(!ls.contains(_))).map{ ls :: _ } }
+    }
+  }
 }
 
