@@ -181,5 +181,7 @@ object S99 {
       case x :: xs => combinations(x, list).flatMap{ ls => group(xs, list.filter(!ls.contains(_))).map{ ls :: _ } }
     }
   }
+  // P28a
+  def lsort[A](list: List[List[A]]): List[List[A]] = list.sortWith(_.length < _.length)
 }
 
